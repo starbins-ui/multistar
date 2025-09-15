@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MultiStar17 Product Sales</title>
+<style>
+  :root{
+    --dark-blue:#072b6b;
+    --black:#000;
+    --white:#fff;
+  }
+  html,body{margin:0;padding:0;height:100%;font-family:Arial,Helvetica,sans-serif;}
+  /* Login Page */
+  #loginPage{
+    display:flex;align-items:center;justify-content:center;
+    background:var(--dark-blue);height:100vh;
+  }
+  .login-box{
+    background:var(--black);color:var(--white);
+    padding:30px;border-radius:10px;width:300px;
+    text-align:center;
+  }
+  .login-box h1{margin-top:0;font-size:24px;}
+  .login-box input{
+    width:90%;padding:10px;margin:10px 0;
+    border:none;border-radius:5px;
+    background:#111;color:var(--white);
+  }
+  .login-box button{
+    width:95%;padding:10px;border:none;border-radius:5px;
+    background:var(--dark-blue);color:var(--white);
+    font-weight:bold;cursor:pointer;
+  }
+  .login-box a{color:var(--white);text-decoration:none;font-weight:bold;}
+  /* Shop Page */
+  #shopPage{
+    display:none;background:var(--black);color:var(--white);
+    min-height:100vh;
+  }
+  header{
+    background:var(--dark-blue);padding:15px;text-align:center;
+    font-size:24px;font-weight:bold;
+  }
+  .products{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;padding:20px;
+  }
+  .product{
+    background:var(--dark-blue);padding:15px;border-radius:10px;
+    text-align:center;
+  }
+  .product img{width:100%;border-radius:10px;}
+  .product h3{margin:10px 0 5px;}
+  .product p{margin:0 0 10px;}
+  .product button{
+    background:var(--black);color:var(--white);
+    border:1px solid var(--white);padding:8px 12px;
+    border-radius:5px;cursor:pointer;
+  }
+</style>
+</head>
+<body>
+
+<!-- Login Page -->
+<section id="loginPage">
+  <div class="login-box">
+    <h1>Welcome</h1>
+    <p>Login to enter <br>
+      <a href="#" id="siteLink">www.multistar17.com</a>
+    </p>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button id="loginBtn">Login</button>
+    <p id="msg" style="color:red;display:none;">Please fill all fields</p>
+  </div>
+</section>
+
+<!-- Shop Page -->
+<section id="shopPage">
+  <header>MultiStar17 Big Sale</header>
+  <div class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150?text=Product+1" alt="">
+      <h3>Product 1</h3>
+      <p>$19.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150?text=Product+2" alt="">
+      <h3>Product 2</h3>
+      <p>$29.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/200x150?text=Product+3" alt="">
+      <h3>Product 3</h3>
+      <p>$39.99</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<script>
+const loginBtn = document.getElementById('loginBtn');
+const loginPage = document.getElementById('loginPage');
+const shopPage = document.getElementById('shopPage');
+const siteLink = document.getElementById('siteLink');
+const msg = document.getElementById('msg');
+
+function openShop(){
+  loginPage.style.display = 'none';
+  shopPage.style.display = 'block';
+}
+
+loginBtn.onclick = function(){
+  const user = document.getElementById('username').value.trim();
+  const pass = document.getElementById('password').value.trim();
+  if(!user || !pass){
+    msg.style.display = 'block';
+  } else {
+    msg.style.display = 'none';
+    openShop();
+  }
+};
+
+siteLink.onclick = function(e){
+  e.preventDefault();
+  openShop();
+};
+</script>
+
+</body>
+</html>
